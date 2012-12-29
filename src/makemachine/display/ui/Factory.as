@@ -2,7 +2,6 @@ package makemachine.display.ui
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.text.TextFieldAutoSize;
-	import flash.utils.Dictionary;
 	
 	import makemachine.display.shapes.RectangleShape;
 	import makemachine.display.text.BitmapText;
@@ -45,8 +44,8 @@ package makemachine.display.ui
 		
 		// -- element sizes
 		public static const PANEL_WIDTH_LG:int = 140;
-		public static const PANEL_WIDTH_MD:int = ( PANEL_WIDTH_LG - ELEMENT_SPACING ) * .5;
-		public static const PANEL_WIDTH_SM:int = ( PANEL_WIDTH_LG - ELEMENT_SPACING * 3 ) * .25;
+		public static const PANEL_WIDTH_MD:int = (PANEL_WIDTH_LG - ELEMENT_SPACING) * .5;
+		public static const PANEL_WIDTH_SM:int = (PANEL_WIDTH_LG - ELEMENT_SPACING * 3) * .25;
 		
 		// -- used for generating the default background
 		public static var BACKGROUND_COLOR:uint = 0x111111;
@@ -68,9 +67,9 @@ package makemachine.display.ui
 		/**
 		 * Generates a default background shape
 		 */
-		public static function defaultBackground( container:DisplayObjectContainer, xpos:int = 0, ypos:int = 0 ):RectangleShape 
+		public static function defaultBackground(container:DisplayObjectContainer, xpos:int = 0, ypos:int = 0):RectangleShape 
 		{
-			var r:RectangleShape = new RectangleShape( container, xpos, ypos );
+			var r:RectangleShape = new RectangleShape(container, xpos, ypos);
 			r.fillAlpha = BACKGROUND_ALPHA;
 			r.fillColor = BACKGROUND_COLOR;
 			r.cornerRadius = BACKGROUND_CORNER_RADIUS;
@@ -80,7 +79,7 @@ package makemachine.display.ui
 		/**
 		 * Generates nicely formatted parameter text
 		 */
-		public static function formatParameterText( parameter:NumericParameter ):String 
+		public static function formatParameterText(parameter:NumericParameter):String 
 		{
 			var result:String;
 			
@@ -97,33 +96,6 @@ package makemachine.display.ui
 			}
 			
 			return result;
-		}
-		
-		/**
-		 * Factory method for a single line bitmap text field
-		 */
-		public static function singleLineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, stylename:String = '', initText:String = '' ):BitmapText 
-		{
-			var field:BitmapText = new BitmapText( container, xpos, ypos );
-			field.multiline = field.wordWrap = false;
-			field.autoSize = TextFieldAutoSize.LEFT;
-			field.setStyleName( stylename );
-			field.text = initText;
-			return field;
-		}
-		
-		/**
-		 * Factory method for a multi line bitmap text field
-		 */
-		public static function multilineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, w:int = 100, stylename:String = '', initText:String = '' ):BitmapText 
-		{
-			var field:BitmapText = new BitmapText( container, xpos, ypos );
-			field.explicitWidth = w;
-			field.multiline = field.wordWrap = true;
-			field.autoSize = TextFieldAutoSize.LEFT;
-			field.setStyleName( stylename );
-			field.text = initText;
-			return field;
 		}
 	}
 }

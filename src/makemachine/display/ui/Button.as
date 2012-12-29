@@ -220,8 +220,9 @@ package makemachine.display.ui
 			background = Factory.defaultBackground( this );
 			background.fillColor = Factory.MOUSE_UP_COLOR;
 			
-			labelField = Factory.singleLineField( label, 0, 0, 'primary', 'LabelButton' );
+			labelField = BitmapText.singleLineField( label, 0, 0, 'primary', 'LabelButton' );
 			label.transform.colorTransform = color2;
+			labelField.mouseEnabled = false;
 			
 			addChild( label );
 			

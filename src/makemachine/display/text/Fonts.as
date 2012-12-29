@@ -1,4 +1,4 @@
-package makemachine.display.text.fonts
+package makemachine.display.text
 {
 	import flash.text.StyleSheet;
 

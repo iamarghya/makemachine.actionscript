@@ -45,6 +45,7 @@ package makemachine.display.shapes
 		}
 		
 		protected var _thickness:Number;
+		public function get thickness():Number { return _thickness; }
 		public function set thickness( value:Number ):void 
 		{
 			if( _thickness != value ) 

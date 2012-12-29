@@ -6,14 +6,45 @@
 	import flash.text.*;
 	
 	import makemachine.display.InterfaceElement;
-	import makemachine.display.text.fonts.Fonts;
 	
 	public class BitmapText extends InterfaceElement
 	{
-		protected var field	:TextField;
-		protected var sprite:Sprite;
-		protected var clone	:Bitmap;
+		// ------------------------------------------------
+		//
+		//	 public static methods
+		//
+		// ------------------------------------------------
 		
+		/**
+		 * Static method for creating a single line bitmap text field
+		 */
+		public static function singleLineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, stylename:String = '', initText:String = '' ):BitmapText 
+		{
+			var field:BitmapText = new BitmapText( container, xpos, ypos );
+			field.multiline = field.wordWrap = false;
+			field.autoSize = TextFieldAutoSize.LEFT;
+			field.setStyleName( stylename );
+			field.text = initText;
+			return field;
+		}
+		
+		/**
+		 * Static method for creating a multi line bitmap text field
+		 */
+		public static function multilineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, w:int = 100, stylename:String = '', initText:String = '' ):BitmapText 
+		{
+			var field:BitmapText = new BitmapText( container, xpos, ypos );
+			field.explicitWidth = w;
+			field.multiline = field.wordWrap = true;
+			field.autoSize = TextFieldAutoSize.LEFT;
+			field.setStyleName( stylename );
+			field.text = initText;
+			return field;
+		}
+		
+		/**
+		 * @Ctr
+		 */
 		public function BitmapText( container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0 ) 
 		{
 			super( container, xpos, ypos );
@@ -24,6 +55,10 @@
 		//	 -- properties
 		//
 		// ------------------------------------------------
+		
+		protected var field	:TextField;
+		protected var sprite:Sprite;
+		protected var clone	:Bitmap;
 		
 		// ------------------------------------------------
 		//	 -- getter/setter
@@ -260,6 +295,22 @@
 			}
 		}
 		
+		/**
+		 * Convenience method for setting up a text field
+		 */
+		public function setup(newText:String, newStyleName:String, fieldX:Number, fieldY:Number, isMultiline:Boolean, fieldWidth:Number = 0):void
+		{
+			multiline = isMultiline;
+			wordWrap = isMultiline;
+			setStyleName(newStyleName);
+			text = newText;
+			x = fieldX;
+			y = fieldY;
+			if(isMultiline) {
+				explicitWidth = fieldWidth;
+			}
+		}
+		
 		// ------------------------------------------------
 		//
 		//	-- protected
@@ -324,7 +375,7 @@
 			
 			if( field.parent ) field.parent.removeChild( field );
 			
-			clone = new Bitmap( bmd, PixelSnapping.ALWAYS, true );
+			clone = new Bitmap( bmd, PixelSnapping.NEVER, true );
 			
 			addChild( clone );
 		}
