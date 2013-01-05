@@ -5,6 +5,6 @@
 	 */
 	public function print( caller:Object, message:Object ):void 
 	{
-		trace( 'print[ ' + String( caller ) + ' ] :: ' + String( message ) );
+		trace( '[' + String( caller ) + '] » ' + String( message ) );
 	}
 }
