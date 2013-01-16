@@ -126,7 +126,7 @@ package makemachine.display.ui
 			
 			background = Factory.defaultBackground( this, 0, 0 );
 			
-			labelField = Factory.singleLineField( this, Factory.ELEMENT_PADDING, Factory.ELEMENT_PADDING, 'primary', 'Slider' );
+			labelField = BitmapText.singleLineField( this, Factory.ELEMENT_PADDING, Factory.ELEMENT_PADDING, 'primary', 'Slider' );
 			labelField.textColor = Factory.TEXT_COLOR_1;
 			labelField.thickness = 100;
 			
@@ -135,7 +135,7 @@ package makemachine.display.ui
 			gutter.setSize( Factory.PANEL_WIDTH_LG - Factory.ELEMENT_PADDING * 2, 10 );
 			gutter.buttonMode = true;
 			
-			valueField = Factory.singleLineField( this, gutter.x + gutter.width + Factory.ELEMENT_PADDING, gutter.y + gutter.height + Factory.ELEMENT_PADDING, 'secondary' );
+			valueField = BitmapText.singleLineField( this, gutter.x + gutter.width + Factory.ELEMENT_PADDING, gutter.y + gutter.height + Factory.ELEMENT_PADDING, 'secondary' );
 			valueField.textColor = Factory.TEXT_COLOR_2;
 			valueField.thickness = 0;
 			
