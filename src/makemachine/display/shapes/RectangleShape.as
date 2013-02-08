@@ -6,15 +6,13 @@
 	public class RectangleShape extends ShapeBase
 	{
 		// --type constants
-		public static const REGULAR		:String = 'regular';
-		public static const COMPLEX		:String = 'complex';
-		public static const ROUNDED		:String = 'rounded';
+		public static const REGULAR:String = 'regular';
+		public static const COMPLEX:String = 'complex';
+		public static const ROUNDED:String = 'rounded';
 		
-		protected var cornerType:String;
-		
-		public function RectangleShape( container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0  )
+		public function RectangleShape(container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0)
 		{  
-			super( container, xpos, ypos );
+			super(container, xpos, ypos);
 		}
 		
 		
@@ -23,6 +21,8 @@
 		//	-- properties
 		//	
 		// ------------------------------------------------
+		
+		protected var cornerType:String;
 		
 		// ------------------------------------------------
 		//	-- getter/setter
@@ -109,7 +109,7 @@
 			// -- super takes care of creating fills and linestyle
 			super.draw();
 			
-			switch( cornerType )
+			switch(cornerType)
 			{
 				case REGULAR :
 					g.drawRect( 0, 0, _width, _height );

@@ -8,9 +8,9 @@ package makemachine.display.shapes
 	
 	public class ShapeBase extends InterfaceElement
 	{
-		public function ShapeBase( container:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0 )
+		public function ShapeBase(container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0)
 		{
-			super( container, xpos, ypos );
+			super(container, xpos, ypos);
 		}
 		
 		// ------------------------------------------------
@@ -115,6 +115,7 @@ package makemachine.display.shapes
 						_gradientAlphas[i] = 1;
 					}
 				}
+				
 				// -- ratios need to match in length
 				// -- so create an even distribution of ratios
 				if( _gradientRatios.length != length )

@@ -25,6 +25,7 @@
 			field.autoSize = TextFieldAutoSize.LEFT;
 			field.setStyleName( stylename );
 			field.text = initText;
+			field.validate();
 			return field;
 		}
 		
@@ -39,6 +40,7 @@
 			field.autoSize = TextFieldAutoSize.LEFT;
 			field.setStyleName( stylename );
 			field.text = initText;
+			field.validate();
 			return field;
 		}
 		
