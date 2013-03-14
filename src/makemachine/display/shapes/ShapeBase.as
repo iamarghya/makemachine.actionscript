@@ -77,6 +77,7 @@ package makemachine.display.shapes
 		}
 		
 		protected var _fillColor:uint;
+		public function get fillColor():uint { return _fillColor; }
 		public function set fillColor( color:uint ):void 
 		{
 			if( !isNaN( color ) && color != _fillColor  ) 
