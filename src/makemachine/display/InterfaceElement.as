@@ -9,14 +9,14 @@ package makemachine.display
 		public var id:Object;
 		public var data:Object;
 		
-		public function InterfaceElement( container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0 )
+		public function InterfaceElement(container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0)
 		{
 			super();
 			
 			cacheAsBitmap = true;
 	
-			if( container ) {
-				container.addChild( this );
+			if(container) {
+				container.addChild(this);
 			}
 			
 			x = xpos;
@@ -58,29 +58,29 @@ package makemachine.display
 		public function destroy():void 
 		{
 			// -- override w/ sub-class	
-			if( parent ) parent.removeChild( this );
-			removeEventListener( Event.ENTER_FRAME, validate );
+			if(parent) parent.removeChild(this);
+			removeEventListener(Event.ENTER_FRAME, validate);
 		}
 		
 		public function invalidate():void
 		{
 			invalidated = true;
-			addEventListener( Event.ENTER_FRAME, validate );
+			addEventListener(Event.ENTER_FRAME, validate);
 		}
 		
 		public function measure():Rectangle
 		{
-			return new Rectangle( x, y, _width, _height );
+			return new Rectangle(x, y, _width, _height);
 		}
 		
-		public function validate( event:Event = null ):void
+		public function validate(event:Event = null):void
 		{
-			if( created && invalidated )
+			if(created && invalidated)
 			{
 				draw();
 				measure();
 				invalidated = false;
-				removeEventListener( Event.ENTER_FRAME, validate );
+				removeEventListener(Event.ENTER_FRAME, validate);
 			}
 		}
 		

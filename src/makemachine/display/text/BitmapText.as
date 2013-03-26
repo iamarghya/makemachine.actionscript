@@ -1,9 +1,15 @@
 ﻿package makemachine.display.text
 {
-	import flash.display.*;
-	import flash.events.*;
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.DisplayObjectContainer;
+	import flash.display.PixelSnapping;
+	import flash.display.Sprite;
 	import flash.geom.Rectangle;
-	import flash.text.*;
+	import flash.text.AntiAliasType;
+	import flash.text.StyleSheet;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	
 	import makemachine.display.InterfaceElement;
 	
@@ -18,12 +24,12 @@
 		/**
 		 * Static method for creating a single line bitmap text field
 		 */
-		public static function singleLineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, stylename:String = '', initText:String = '' ):BitmapText 
+		public static function singleLineField(container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, stylename:String = '', initText:String = ''):BitmapText 
 		{
-			var field:BitmapText = new BitmapText( container, xpos, ypos );
+			var field:BitmapText = new BitmapText(container, xpos, ypos);
 			field.multiline = field.wordWrap = false;
 			field.autoSize = TextFieldAutoSize.LEFT;
-			field.setStyleName( stylename );
+			field.setStyleName(stylename);
 			field.text = initText;
 			field.validate();
 			return field;
@@ -32,13 +38,13 @@
 		/**
 		 * Static method for creating a multi line bitmap text field
 		 */
-		public static function multilineField( container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, w:int = 100, stylename:String = '', initText:String = '' ):BitmapText 
+		public static function multilineField(container:DisplayObjectContainer = null, xpos:int = 0, ypos:int = 0, w:int = 100, stylename:String = '', initText:String = ''):BitmapText 
 		{
-			var field:BitmapText = new BitmapText( container, xpos, ypos );
+			var field:BitmapText = new BitmapText(container, xpos, ypos);
 			field.explicitWidth = w;
 			field.multiline = field.wordWrap = true;
 			field.autoSize = TextFieldAutoSize.LEFT;
-			field.setStyleName( stylename );
+			field.setStyleName(stylename);
 			field.text = initText;
 			field.validate();
 			return field;
@@ -47,9 +53,9 @@
 		/**
 		 * @Ctr
 		 */
-		public function BitmapText( container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0 ) 
+		public function BitmapText(container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0) 
 		{
-			super( container, xpos, ypos );
+			super(container, xpos, ypos);
 		}
 		
 		// ------------------------------------------------
@@ -66,90 +72,90 @@
 		//	 -- getter/setter
 		// ------------------------------------------------
 		
-		public function set antiAliasType( value:String ):void 
+		public function set antiAliasType(value:String):void 
 		{
-			if( value != field.antiAliasType ) 
+			if(value != field.antiAliasType) 
 			{
 				field.antiAliasType = value;
 				invalidate();
 			}
 		}
 		
-		public function set autoSize( value:String ):void 
+		public function set autoSize(value:String):void 
 		{
-			if( value != field.autoSize ) 
+			if(value != field.autoSize) 
 			{
 				field.autoSize = value;
 				invalidate();
 			}
 		}	
 		
-		public function set background( value:Boolean ):void 
+		public function set background(value:Boolean):void 
 		{
-			if( value != field.background ) 
+			if(value != field.background) 
 			{
 				field.background = value;
 				invalidate();
 			}
 		}
 	
-		public function set backgroundColor( value:uint ):void 
+		public function set backgroundColor(value:uint):void 
 		{
-			if( value != field.backgroundColor ) 
+			if(value != field.backgroundColor) 
 			{
 				field.backgroundColor = value;
 				invalidate();
 			}
 		}
 		
-		public function set border( value:Boolean ):void 
+		public function set border(value:Boolean):void 
 		{
-			if( value != field.border ) 
+			if(value != field.border) 
 			{
 				field.border = value;
 				invalidate();
 			}
 		}
 		
-		public function set borderColor( value:uint ):void 
+		public function set borderColor(value:uint):void 
 		{
-			if( value != field.borderColor ) 
+			if(value != field.borderColor) 
 			{
 				field.borderColor = value;
 				invalidate();
 			}
 		}
 	
-		public function set condenseWhite( value:Boolean ):void 
+		public function set condenseWhite(value:Boolean):void 
 		{
-			if( value != field.condenseWhite ) 
+			if(value != field.condenseWhite) 
 			{
 				field.condenseWhite = value;
 				invalidate();
 			}
 		}
 		
-		public function set explicitWidth( value:Number ):void 
+		public function set explicitWidth(value:Number):void 
 		{
-			if( value != field.width ) 
+			if(value != field.width) 
 			{
 				field.width = _width = value;
 				invalidate();
 			}
 		}
 		
-		public function set explicitHeight( value:Number ):void 
+		public function set explicitHeight(value:Number):void 
 		{
-			if( value != field.height ) 
+			if(value != field.height) 
 			{
 				field.height = _height = value;	
 				invalidate();
 			}
 		}
 		
-		public function set gridFitType( value:String ):void 
+		public function set gridFitType(value:String):void 
 		{
-			if( value != field.gridFitType ) 
+			if(value != field.gridFitType) 
 			{
 				field.gridFitType = value;
 				invalidate();
@@ -157,11 +163,11 @@
 		}
 		
 		private var _length:int;
-		public function get length():int { return ( field ) ? field.length : 0; }
+		public function get length():int { return (field) ? field.length : 0; }
 		
-		public function set multiline( value:Boolean ):void 
+		public function set multiline(value:Boolean):void 
 		{
-			if( value != field.multiline ) 
+			if(value != field.multiline) 
 			{
 				field.multiline = value;
 				invalidate();
@@ -169,20 +175,20 @@
 		}
 		
 		private var _numLines:int;
-		public function get numLines():int { return  ( field ) ? field.numLines : 0; }
+		public function get numLines():int { return  (field) ? field.numLines : 0; }
 		
-		public function set sharpness( value:Number ):void  
+		public function set sharpness(value:Number):void  
 		{
-			if( value != field.sharpness ) 
+			if(value != field.sharpness) 
 			{
 				field.sharpness = value;	
 				invalidate();
 			}
 		}
 		
-		public function setStyleSheet( newStyleSheet:StyleSheet ):void 
+		public function setStyleSheet(newStyleSheet:StyleSheet):void 
 		{
-			if( newStyleSheet != field.styleSheet ) 
+			if(newStyleSheet != field.styleSheet) 
 			{
 				field.styleSheet = newStyleSheet;
 				invalidate();
@@ -190,7 +196,7 @@
 		}
 		
 		protected var _styleName:String;
-		public function setStyleName( stylename:String ):void 
+		public function setStyleName(stylename:String):void 
 		{
 			_styleName = stylename;
 			updateText();
@@ -200,9 +206,9 @@
 	
 		protected var _text:String;
 		public function get text():String { return field.text; }
-		public function set text( value:String ):void 
+		public function set text(value:String):void 
 		{	
-			if( value != _text ) 
+			if(value != _text) 
 			{
 				_text = value;
 				updateText();
@@ -213,7 +219,7 @@
 		
 		public function set textColor(value:uint):void 
 		{
-			if( value != field.textColor ) 
+			if(value != field.textColor) 
 			{
 				field.textColor = value;
 				invalidate();
@@ -221,23 +227,23 @@
 		}
 		
 		private var _textWidth:Number;
-		public function get textWidth():Number { return  ( field ) ? field.textWidth : 0; }
+		public function get textWidth():Number { return  (field) ? field.textWidth : 0; }
 		
 		private var _textHeight:Number;
-		public function get textHeight():Number { return  ( field ) ? field.textHeight : 0; }
+		public function get textHeight():Number { return  (field) ? field.textHeight : 0; }
 		
-		public function set thickness (value:Number ):void 
+		public function set thickness (value:Number):void 
 		{
-			if( value != field.thickness )
+			if(value != field.thickness)
 			{
 				field.thickness = value;
 				invalidate();
 			}	
 		}
 		
-		public function set wordWrap( value:Boolean ):void 
+		public function set wordWrap(value:Boolean):void 
 		{
-			if( value != field.wordWrap ) 
+			if(value != field.wordWrap) 
 			{
 				field.wordWrap = value;
 				invalidate();
@@ -250,7 +256,7 @@
 		//
 		// ------------------------------------------------
 		
-		public function appendText( newText:String ):void 
+		public function appendText(newText:String):void 
 		{
 			text = _text + newText;
 		}
@@ -261,7 +267,7 @@
 		
 		override public function destroy():void 
 		{
-			if( clone && clone.bitmapData ) 
+			if(clone && clone.bitmapData) 
 			{
 				clone.bitmapData.dispose();
 			}
@@ -269,28 +275,28 @@
 		
 		override public function measure():Rectangle
 		{
-			if( created )
+			if(created)
 			{
 				_width = field.width;
 				_height = field.height;
 			}
-			return new Rectangle( x, y, _width, _height );
+			return new Rectangle(x, y, _width, _height);
 		}
 		
 		override public function toString():String { return "BitmapText"; }
 		
-		override public function set x( value:Number ):void 
+		override public function set x(value:Number):void 
 		{
-			if( value != super.x ) 
+			if(value != super.x) 
 			{
 				super.x = value
 				invalidate();
 			}
 		}
 		
-		override public function set y( value:Number ):void 
+		override public function set y(value:Number):void 
 		{
-			if( value != super.y ) 
+			if(value != super.y) 
 			{
 				super.y = value
 				invalidate();
@@ -359,27 +365,29 @@
 			
 			updateText();
 			
-			if( !field.styleSheet ) 
+			if(!field.styleSheet) 
 			{
 				field.styleSheet = Fonts.defaultStyleSheet;
 			}
 			
-			if ( clone ) 
+			if(clone) 
 			{
-				if ( clone.bitmapData ) clone.bitmapData.dispose();
-				if( clone.parent ) clone.parent.removeChild( clone );
+				if(clone.bitmapData) clone.bitmapData.dispose();
+				if(clone.parent) clone.parent.removeChild(clone);
 			}
 			
-			sprite.addChild( field );
+			sprite.addChild(field);
 			
-			var bmd:BitmapData = new BitmapData( sprite.width, sprite.height, true, 0 );
-			bmd.draw( sprite );
+			var bmd:BitmapData = new BitmapData(sprite.width, sprite.height, true, 0);
+			bmd.draw(sprite);
 			
-			if( field.parent ) field.parent.removeChild( field );
+			if(field.parent) field.parent.removeChild(field);
 			
-			clone = new Bitmap( bmd, PixelSnapping.NEVER, true );
+			clone = new Bitmap(bmd, PixelSnapping.NEVER, true);
+			clone.smoothing = true;
+			clone.pixelSnapping = PixelSnapping.NEVER;
 			
-			addChild( clone );
+			addChild(clone);
 		}
 	}
 }
